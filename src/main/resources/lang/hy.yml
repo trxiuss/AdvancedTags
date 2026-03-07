@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Դուք չունեք համապատասխան թույլտվություն:</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Ֆայլերը հաջողությամբ վերբեռնվեցին:</gradient>"
+no-tags: "<red>✖ Դուք դեռ չունեք ոչ մի տիտղոս:</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Նոր տիտղոսը ընտրված է:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Տիտղոսը հաջողությամբ հեռացվեց:</gradient>"
+locked-tag: "<red>✖ Դուք չունեք այս տիտղոսի համար անհրաժեշտ թույլտվությունը:</red>"
+cooldown: "<red>✖ Խնդրում ենք սպասել <bold><time></bold> վայրկյան:</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Ընտրված տիտղոս:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Տիտղոսը թարմացվեց</gradient>"
+  sub: "<tag>"

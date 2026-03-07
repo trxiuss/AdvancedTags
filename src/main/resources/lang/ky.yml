@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Сизде бул аракетке уруксат жок!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Файлдар ийгиликтүү кайра жүктөлдү.</gradient>"
+no-tags: "<red>✖ Сизде азырынча эч кандай тег жок.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Жаңы тег тандалды:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Тег ийгиликтүү өчүрүлдү.</gradient>"
+locked-tag: "<red>✖ Бул тег үчүн сизде уруксат жок!</red>"
+cooldown: "<red>✖ Тегди алмаштыруу үчүн <bold><time></bold> секунд күтө туруңуз.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Тандалган тег:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Тег жаңыртылды</gradient>"
+  sub: "<tag>"

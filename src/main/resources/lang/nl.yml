@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Geen toestemming!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Bestanden succesvol herladen.</gradient>"
+no-tags: "<red>✖ Je hebt nog geen tags.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Nieuwe tag geselecteerd:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Tag succesvol verwijderd.</gradient>"
+locked-tag: "<red>✖ Je hebt geen toestemming voor deze tag!</red>"
+cooldown: "<red>✖ Wacht <bold><time></bold> seconden.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Geselecteerde tag:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Tag bijgewerkt</gradient>"
+  sub: "<tag>"

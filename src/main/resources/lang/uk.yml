@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ У вас немає прав!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Файли успішно перезавантажено.</gradient>"
+no-tags: "<red>✖ У вас ще немає тегів.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Обрано новий тег:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Тег успішно видалено.</gradient>"
+locked-tag: "<red>✖ У вас немає прав на цей тег!</red>"
+cooldown: "<red>✖ Зачекайте <bold><time></bold> сек.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Обраний тег:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Тег оновлено</gradient>"
+  sub: "<tag>"

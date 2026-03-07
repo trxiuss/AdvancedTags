@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Anda tidak memiliki izin untuk ini!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ File plugin berhasil dimuat ulang.</gradient>"
+no-tags: "<red>✖ Anda belum memiliki tag apa pun.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Tag baru berhasil dipilih:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Tag Anda berhasil dihapus.</gradient>"
+locked-tag: "<red>✖ Anda tidak memiliki izin yang diperlukan untuk tag ini!</red>"
+cooldown: "<red>✖ Harap tunggu <bold><time></bold> detik untuk mengganti tag Anda.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Tag Terpilih:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Tag Diperbarui</gradient>"
+  sub: "<tag>"

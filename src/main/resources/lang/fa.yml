@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ شما اجازه انجام این کار را ندارید!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ فایل‌های پلاگین با موفقیت بازنشانی شدند.</gradient>"
+no-tags: "<red>✖ شما هنوز هیچ تگی ندارید.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ تگ جدید با موفقیت انتخاب شد:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ تگ شما با موفقیت حذف شد.</gradient>"
+locked-tag: "<red>✖ شما اجازه لازم برای این تگ را ندارید!</red>"
+cooldown: "<red>✖ لطفا <bold><time></bold> ثانیه برای تغییر تگ صبر کنید.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ تگ انتخاب شده:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>تگ بروزرسانی شد</gradient>"
+  sub: "<tag>"

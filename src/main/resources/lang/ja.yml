@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ 権限がありません！</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ 設定を再読み込みしました。</gradient>"
+no-tags: "<red>✖ タグを所有していません。</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ 新しいタグを選択しました:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ タグを解除しました。</gradient>"
+locked-tag: "<red>✖ このタグを使用する権限がありません！</red>"
+cooldown: "<red>✖ 再選択まで <bold><time></bold> 秒待ってください。</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ 選択中のタグ:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>タグを更新しました</gradient>"
+  sub: "<tag>"

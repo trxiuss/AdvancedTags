@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Nu ai permisiunea pentru a face asta!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Fisierele au fost reîncărcate cu succes.</gradient>"
+no-tags: "<red>✖ Nu deții nicio etichetă încă.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Noua etichetă a fost selectată:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Eticheta ta a fost eliminată cu succes.</gradient>"
+locked-tag: "<red>✖ Nu ai permisiunea necesară pentru această etichetă!</red>"
+cooldown: "<red>✖ Te rugăm să aștepți <bold><time></bold> secunde pentru a schimba eticheta.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Etichetă selectată:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Etichetă actualizată</gradient>"
+  sub: "<tag>"

@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ คุณไม่มีสิทธิ์ทำรายการนี้!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ รีโหลดไฟล์ปลั๊กอินสำเร็จแล้ว</gradient>"
+no-tags: "<red>✖ คุณยังไม่มีแท็กใดๆ</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ เลือกแท็กใหม่สำเร็จ:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ ลบแท็กของคุณสำเร็จแล้ว</gradient>"
+locked-tag: "<red>✖ คุณไม่มีสิทธิ์สำหรับแท็กนี้!</red>"
+cooldown: "<red>✖ กรุณารอ <bold><time></bold> วินาทีเพื่อเปลี่ยนแท็ก</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ แท็กที่เลือก:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>อัปเดตแท็กแล้ว</gradient>"
+  sub: "<tag>"

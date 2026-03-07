@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Ehhez nincs jogosultságod!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ A fájlok sikeresen újratöltve.</gradient>"
+no-tags: "<red>✖ Még nincsenek tagjeid.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Új tag kiválasztva:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ A taged sikeresen eltávolítva.</gradient>"
+locked-tag: "<red>✖ Nincs jogosultságod ehhez a taghez!</red>"
+cooldown: "<red>✖ Kérlek várj <bold><time></bold> másodpercet a váltáshoz.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Kiválasztott tag:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Tag frissítve</gradient>"
+  sub: "<tag>"

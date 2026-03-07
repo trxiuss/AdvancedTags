@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ ¡No tienes permiso!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Archivos recargados con éxito.</gradient>"
+no-tags: "<red>✖ Aún no tienes etiquetas.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Nueva etiqueta seleccionada:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Etiqueta eliminada con éxito.</gradient>"
+locked-tag: "<red>✖ ¡No tienes permiso para esta etiqueta!</red>"
+cooldown: "<red>✖ Por favor espera <bold><time></bold> segundos.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Etiqueta:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Etiqueta Actualizada</gradient>"
+  sub: "<tag>"

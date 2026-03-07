@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Bu işlem için yetkiniz bulunmuyor!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Eklenti dosyaları başarıyla yenilendi.</gradient>"
+no-tags: "<red>✖ Henüz sahip olduğunuz hiçbir ünvan bulunmuyor.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Yeni ünvanınız başarıyla seçildi:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Ünvanınız başarıyla temizlendi.</gradient>"
+locked-tag: "<red>✖ Bu ünvana sahip olmak için gerekli yetkiniz yok!</red>"
+cooldown: "<red>✖ Lütfen ünvan değiştirmek için <bold><time></bold> saniye bekleyin.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Seçilen Ünvan:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Ünvan Güncellendi</gradient>"
+  sub: "<tag>"

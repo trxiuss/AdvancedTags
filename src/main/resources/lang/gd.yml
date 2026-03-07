@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Chan eil cead agad airson seo!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Na faidhlichean air an ath-luchdachadh.</gradient>"
+no-tags: "<red>✖ Chan eil tagaichean agad fhathast.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Taga ùr air a thaghadh:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Taga air a ghlanadh gu soirbheachail.</gradient>"
+locked-tag: "<red>✖ Chan eil cead agad airson an taga seo!</red>"
+cooldown: "<red>✖ Fuirich <bold><time></bold> diog mus atharraich thu an taga agad.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Taga air a thaghadh:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Taga air ùrachadh</gradient>"
+  sub: "<tag>"

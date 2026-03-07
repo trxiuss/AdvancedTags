@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ 이 작업을 수행할 권한이 없습니다!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ 플러그인 설정이 성공적으로 다시 로드되었습니다.</gradient>"
+no-tags: "<red>✖ 아직 보유한 칭호가 없습니다.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ 새로운 칭호가 선택되었습니다:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ 칭호가 성공적으로 제거되었습니다.</gradient>"
+locked-tag: "<red>✖ 이 칭호를 사용할 권한이 없습니다!</red>"
+cooldown: "<red>✖ 칭호를 변경하려면 <bold><time></bold>초만 기다려 주세요.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ 선택된 칭호:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>칭호 업데이트됨</gradient>"
+  sub: "<tag>"

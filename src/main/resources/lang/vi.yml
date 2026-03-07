@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Bạn không có quyền thực hiện hành động này!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Đã tải lại các tệp thành công.</gradient>"
+no-tags: "<red>✖ Bạn chưa sở hữu danh hiệu nào.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Danh hiệu mới đã được chọn:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Đã xóa danh hiệu thành công.</gradient>"
+locked-tag: "<red>✖ Bạn không có quyền cho danh hiệu này!</red>"
+cooldown: "<red>✖ Vui lòng đợi <bold><time></bold> giây để đổi danh hiệu.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Danh hiệu đã chọn:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Đã cập nhật danh hiệu</gradient>"
+  sub: "<tag>"

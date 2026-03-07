@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ ليس لديك صلاحية!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ تم إعادة تحميل الملفات بنجاح.</gradient>"
+no-tags: "<red>✖ لا تملك أي أوسمة بعد.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ تم اختيار الوسام بنجاح:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ تم إزالة الوسام بنجاح.</gradient>"
+locked-tag: "<red>✖ لا تملك صلاحية لهذا الوسام!</red>"
+cooldown: "<red>✖ يرجى الانتظار <bold><time></bold> ثانية.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ الوسام المختار:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>تم تحديث الوسام</gradient>"
+  sub: "<tag>"

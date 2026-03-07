@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ K tomuto nemáš oprávnění!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Soubory byly úspěšně načteny.</gradient>"
+no-tags: "<red>✖ Zatím nevlastníš žádné tagy.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Nový tag byl úspěšně vybrán:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Tvůj tag byl úspěšně odstraněn.</gradient>"
+locked-tag: "<red>✖ K tomuto tagu nemáš potřebné oprávnění!</red>"
+cooldown: "<red>✖ Počkej prosím <bold><time></bold> sekund pro změnu tagu.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Vybraný tag:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Tag aktualizován</gradient>"
+  sub: "<tag>"

@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Δεν έχετε την άδεια για αυτό!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Τα αρχεία επαναφορτώθηκαν με επιτυχία.</gradient>"
+no-tags: "<red>✖ Δεν έχετε ακόμα κανένα tag.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Το νέο tag επιλέχθηκε:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Το tag σας αφαιρέθηκε με επιτυχία.</gradient>"
+locked-tag: "<red>✖ Δεν έχετε την απαιτούμενη άδεια για αυτό το tag!</red>"
+cooldown: "<red>✖ Παρακαλώ περιμένετε <bold><time></bold> δευτερόλεπτα.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Επιλεγμένο Tag:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Το Tag ενημερώθηκε</gradient>"
+  sub: "<tag>"

@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Bu əməliyyat üçün icazəniz yoxdur!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Fayllar uğurla yeniləndi.</gradient>"
+no-tags: "<red>✖ Hələlik heç bir ünvanınız yoxdur.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Yeni ünvan seçildi:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Ünvan uğurla təmizləndi.</gradient>"
+locked-tag: "<red>✖ Bu ünvan üçün icazəniz yoxdur!</red>"
+cooldown: "<red>✖ Yenidən seçim etmək üçün <bold><time></bold> saniyə gözləyin.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Seçilən Ünvan:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Ünvan Yeniləndi</gradient>"
+  sub: "<tag>"

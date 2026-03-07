@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ You do not have permission for this!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Plugin files reloaded successfully.</gradient>"
+no-tags: "<red>✖ You do not own any tags yet.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ New tag successfully selected:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Your tag was successfully cleared.</gradient>"
+locked-tag: "<red>✖ You do not have the required permission for this tag!</red>"
+cooldown: "<red>✖ Please wait <bold><time></bold> seconds to change your tag.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Selected Tag:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Tag Updated</gradient>"
+  sub: "<tag>"

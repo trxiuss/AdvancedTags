@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Keine Berechtigung!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Dateien erfolgreich neu geladen.</gradient>"
+no-tags: "<red>✖ Du hast noch keine Tags.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Neuer Tag ausgewählt:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Tag erfolgreich entfernt.</gradient>"
+locked-tag: "<red>✖ Keine Berechtigung für diesen Tag!</red>"
+cooldown: "<red>✖ Bitte warte <bold><time></bold> Sekunden.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Tag:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Tag Aktualisiert</gradient>"
+  sub: "<tag>"

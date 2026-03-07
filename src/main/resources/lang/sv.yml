@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ Du har inte behörighet för detta!</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ Inställningarna har laddats om.</gradient>"
+no-tags: "<red>✖ Du äger inga taggar än.</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ Ny tagg vald:</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ Din tagg har tagits bort.</gradient>"
+locked-tag: "<red>✖ Du har inte rätt behörighet för denna tagg!</red>"
+cooldown: "<red>✖ Vänta <bold><time></bold> sekunder innan du byter tagg.</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ Vald tagg:</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>Tagg uppdaterad</gradient>"
+  sub: "<tag>"

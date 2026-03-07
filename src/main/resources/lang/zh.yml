@@ -1,0 +1,12 @@
+prefix: "<gradient:#FFD700:#FFA500><bold>AdvancedTags</bold></gradient> <dark_gray>»</dark_gray> "
+no-permission: "<red>✖ 您没有权限！</red>"
+reloaded: "<gradient:#00FFAA:#00AAFF>✔ 插件已成功重载。</gradient>"
+no-tags: "<red>✖ 您目前没有任何称号。</red>"
+tag-selected: "<gradient:#55FF55:#00AA00>✔ 已选择新称号：</gradient> <tag>"
+tag-cleared: "<gradient:#FFAA00:#FF5555>✔ 称号已成功清除。</gradient>"
+locked-tag: "<red>✖ 您没有此称号的权限！</red>"
+cooldown: "<red>✖ 请等待 <bold><time></bold> 秒。</red>"
+actionbar: "<gradient:#00FFAA:#00AAFF>✨ 已选称号：</gradient> <tag>"
+title:
+  main: "<gradient:#FFD700:#FFA500>称号已更新</gradient>"
+  sub: "<tag>"

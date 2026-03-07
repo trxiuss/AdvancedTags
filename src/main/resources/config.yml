@@ -1,0 +1,82 @@
+# =========================================================
+#                 ADVANCED TAGS CONFIGURATION
+# =========================================================
+#
+# >> LANGUAGE SETTINGS
+# settings.lang: Choose your language (e.g., tr, en, de, es, ru)
+# Language files are located in the /lang/ folder.
+#
+# >> PLACEHOLDER (PLACEHOLDERAPI)
+# %advancedtags_unvan%  -> Shows the player's selected tag. Returns empty if no tag is selected.
+#
+# >> COMMANDS
+# /unvan (or /ünvan, /tags) -> Opens the tag selection menu.
+# /advancedtags reload (or /at reload)     -> Reloads the plugin files.
+#
+# >> PERMISSIONS
+# advancedtags.command        -> Permission to open the menu (Available to everyone).
+# advancedtags.admin          -> Permission to use the reload command (OP) and bypass the cooldown.
+# advancedtags.bypass.cooldown-> Permission to bypass the cooldown.
+# advancedtags.tag.<id>       -> Permission to access a specific tag (e.g., advancedtags.tag.tag1).
+# advancedtags.tag.*          -> Wildcard permission granting access to all tags.
+# =========================================================
+
+settings:
+  lang: "en"
+  cooldown: 3
+  sounds:
+    success: ENTITY_PLAYER_LEVELUP
+
+menu_settings:
+  title: "<#FFD700>◆ <#FFC300>T<#FFAF00>a<#FF9A00>g <#FF8600>S<#FF7200>e<#FF5E00>l<#FF4A00>e<#FF3600>c<#FF2200>t<#FF2200>i<#FF2200>o<#FF2200>n <#FF2200>◆"
+  size: 36
+  fill_material: BLACK_STAINED_GLASS_PANE
+
+  next_page_button:
+    material: ARROW
+    display_name: "<#FFB347>◆ Next Page ◆"
+    lore:
+      - "&7Click to go to the"
+      - "&7next page."
+
+  prev_page_button:
+    material: ARROW
+    display_name: "<#FFB347>◆ Previous Page ◆"
+    lore:
+      - "&7Click to return to the"
+      - "&7previous page."
+
+  no_tag_button:
+    material: BARRIER
+    display_name: "<#FF4A00>◆ Reset Tag ◆"
+    lore:
+      - "&7Removes your active tag."
+      - "&7Click to exit the menu."
+
+  locked:
+    material: GRAY_DYE
+    lore-append: "&c✘ You do not own this tag!"
+
+# =========================================================
+#                      TAGS
+# =========================================================
+
+tags:
+  tag1:
+    display_name: "<#FF7F50>[✈]"
+    material: PAPER
+    lore:
+      - "&7For beginners."
+      - "&7Everyone can select."
+  tag2:
+    display_name: "<#FF8C69>[⛏]"
+    material: PAPER
+    lore:
+      - "&7For beginners."
+      - "&7Everyone can select."
+  tag3:
+    display_name: "<#FFA07A>[🪓]"
+    material: PAPER
+    lore:
+      - "&7For beginners."
+      - "&7Everyone can select."

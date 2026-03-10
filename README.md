@@ -79,10 +79,12 @@ tags:
 |--------------|----------------|
 | ✅ Paper     | Fully Supported |
 | ✅ Purpur    | Fully Supported |
-| ✅ Spigot    | Fully Supported |
 | ✅ Folia     | Fully Supported |
-| ✅ Bukkit    | Fully Supported |
+| ❌ Spigot    | Not Supported |
+| ❌ Bukkit    | Not Supported |
 
+- Optimized for **modern server software**. Fully compatible with **Paper**, **Folia**, and all their fork (**Purpur**, **Pufferfish**, etc.).
+- 
 ## 🧩 Placeholders
 Make sure that **PlaceholderAPI** is installed to use the **AdvancedTags** plugin.
 - `%advancedtags_unvan%` - Returns the player's active tag (with colors).

@@ -1,17 +1,17 @@
 name: AdvancedTags
-version: 1.1
+version: 1.2
 main: me.advancedtags.AdvancedTags
 api-version: "1.20"
-author: "ozan"
+author: "trxiuss"
 license: "CC-BY-NC-4.0"
 folia-supported: true
-depend: [PlaceholderAPI]
+softdepend: [PlaceholderAPI]
 commands:
   unvan:
-    description: Title menu command
+    description: Tag selection menu
     aliases: ["ünvan", "tags"]
   advancedtags:
-    description: Plugin admin command
+    description: Tag admin command
     aliases: ["at"]
 permissions:
   advancedtags.command:
@@ -19,4 +19,6 @@ permissions:
   advancedtags.admin:
     default: op
   advancedtags.bypass.cooldown:
+    default: op
+  advancedtags.tag.*:
     default: op

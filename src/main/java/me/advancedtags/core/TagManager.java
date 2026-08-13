@@ -1,27 +1,21 @@
-/*
- * AdvancedTags - A modern Minecraft title management system.
- * Copyright (C) 2026 ozan
- * 
- * Licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
- * You may not use this work for commercial purposes.
- * For more info: https://creativecommons.org/licenses/by-nc/4.0/
- */
 package me.advancedtags.core;
 
 import me.advancedtags.AdvancedTags;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.title.Title;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerQuitEvent;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class TagManager {
+public class TagManager implements Listener {
     private final AdvancedTags plugin;
     private final Map<String, Tag> tags = new LinkedHashMap<>();
     private final Map<UUID, Long> cooldowns = new ConcurrentHashMap<>();
@@ -37,20 +31,39 @@ public class TagManager {
         if (section == null) return;
         for (String key : section.getKeys(false)) {
             String display = section.getString(key + ".display_name", key);
-            String matName = section.getString(key + ".material", "NAME_TAG");
+            String matName = section.getString(key + ".material", "PAPER");
             Material mat = Material.matchMaterial(matName);
-            if (mat == null) mat = Material.NAME_TAG;
+            if (mat == null) mat = Material.PAPER;
             List<String> lore = section.getStringList(key + ".lore");
             tags.put(key, new Tag(key, display, mat, lore));
         }
     }
 
-    public Map<String, Tag> getTags() { return tags; }
-    public Tag getTag(String id) { return tags.get(id); }
+    public Map<String, Tag> getTags() {
+        return tags;
+    }
+
+    public Tag getTag(String id) {
+        return tags.get(id);
+    }
+
+    public boolean hasTagPermission(Player player, String tagId) {
+        if (player.hasPermission("advancedtags.admin")) return true;
+        if (player.hasPermission("advancedtags.tag.*")) return true;
+        return player.hasPermission("advancedtags.tag." + tagId);
+    }
 
     public boolean isOnCooldown(UUID uuid) {
-        if (!cooldowns.containsKey(uuid)) return false;
-        return (cooldowns.get(uuid) - System.currentTimeMillis()) > 0;
+        Long expiry = cooldowns.get(uuid);
+        if (expiry == null) return false;
+        if (expiry - System.currentTimeMillis() > 0) return true;
+        cooldowns.remove(uuid);
+        return false;
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event) {
+        cooldowns.remove(event.getPlayer().getUniqueId());
     }
 
     public void setCooldown(UUID uuid) {
@@ -64,12 +77,11 @@ public class TagManager {
     }
 
     public void selectTag(Player player, Tag tag) {
-        // GÜNCELLEME: Eğer oyuncu adminse VEYA bypass yetkisi varsa cooldown kontrolünü atla.
         boolean bypass = player.hasPermission("advancedtags.bypass.cooldown") || player.hasPermission("advancedtags.admin");
         
         if (!bypass && isOnCooldown(player.getUniqueId())) {
             long left = getCooldownSeconds(player.getUniqueId());
-            player.sendMessage(plugin.getMessageManager().getMessage("cooldown", Map.of("<time>", String.valueOf(left))));
+            plugin.getMessageManager().sendConfigMessage(player, "cooldown", Map.of("<time>", String.valueOf(left)));
             return;
         }
 
@@ -78,19 +90,14 @@ public class TagManager {
         playSound(player, "success");
 
         Map<String, String> placeholders = Map.of("<tag>", tag.getDisplay());
-        player.sendMessage(plugin.getMessageManager().getMessage("tag-selected", placeholders));
-
-        Component actionbar = plugin.getMessageManager().getRawMessage("actionbar", placeholders);
-        player.sendActionBar(actionbar);
-
-        Component title = plugin.getMessageManager().getRawMessage("title.main", placeholders);
-        Component subtitle = plugin.getMessageManager().getRawMessage("title.sub", placeholders);
-        player.showTitle(Title.title(title, subtitle));
+        plugin.getMessageManager().sendConfigMessage(player, "tag-selected", placeholders);
+        plugin.getMessageManager().sendActionBar(player, "actionbar", placeholders);
+        plugin.getMessageManager().sendTitle(player, "title.main", "title.sub", placeholders);
     }
 
     public void clearTag(Player player) {
         plugin.getStorageManager().setTag(player.getUniqueId(), null);
-        player.sendMessage(plugin.getMessageManager().getMessage("tag-cleared", Map.of()));
+        plugin.getMessageManager().sendConfigMessage(player, "tag-cleared", Map.of());
     }
 
     public void playSound(Player player, String type) {

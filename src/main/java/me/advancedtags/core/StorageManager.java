@@ -1,17 +1,10 @@
-/*
- * AdvancedTags - A modern Minecraft title management system.
- * Copyright (C) 2026 ozan
- * 
- * Licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
- * You may not use this work for commercial purposes.
- * For more info: https://creativecommons.org/licenses/by-nc/4.0/
- */
 package me.advancedtags.core;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import me.advancedtags.AdvancedTags;
+import me.advancedtags.utils.SchedulerUtils;
 
 import java.io.File;
 import java.io.FileReader;
@@ -22,12 +15,14 @@ import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class StorageManager {
     private final AdvancedTags plugin;
     private final Map<UUID, String> playerTags = new ConcurrentHashMap<>();
     private final File file;
     private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private final ReentrantLock fileLock = new ReentrantLock();
 
     public StorageManager(AdvancedTags plugin) {
         this.plugin = plugin;
@@ -36,6 +31,7 @@ public class StorageManager {
 
     public void load() {
         if (!file.exists()) return;
+        fileLock.lock();
         try (Reader reader = new FileReader(file)) {
             Type type = new TypeToken<Map<UUID, String>>(){}.getType();
             Map<UUID, String> data = gson.fromJson(reader, type);
@@ -44,14 +40,17 @@ public class StorageManager {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            fileLock.unlock();
         }
     }
 
     public void save() {
-        plugin.getServer().getAsyncScheduler().runNow(plugin, task -> saveSync());
+        SchedulerUtils.runAsync(this::saveSync);
     }
 
     public void saveSync() {
+        fileLock.lock();
         try {
             if (!file.getParentFile().exists()) {
                 file.getParentFile().mkdirs();
@@ -61,6 +60,8 @@ public class StorageManager {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            fileLock.unlock();
         }
     }
 

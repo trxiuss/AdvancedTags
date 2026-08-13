@@ -1,21 +1,18 @@
-/*
- * AdvancedTags - A modern Minecraft title management system.
- * Copyright (C) 2026 ozan
- * 
- * Licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
- * You may not use this work for commercial purposes.
- * For more info: https://creativecommons.org/licenses/by-nc/4.0/
- */
 package me.advancedtags.core;
 
 import me.advancedtags.AdvancedTags;
+import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import net.kyori.adventure.title.Title;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 public class MessageManager {
     private final AdvancedTags plugin;
@@ -39,11 +36,11 @@ public class MessageManager {
             saveLangFile(langName + ".yml");
         }
 
-        String langSetting = plugin.getConfig().getString("settings.lang", "tr");
+        String langSetting = plugin.getConfig().getString("settings.lang", "en");
         File file = new File(langFolder, langSetting + ".yml");
 
         if (!file.exists()) {
-            file = new File(langFolder, "tr.yml");
+            file = new File(langFolder, "en.yml");
         }
 
         config = YamlConfiguration.loadConfiguration(file);
@@ -57,7 +54,7 @@ public class MessageManager {
     }
 
     public Component colorize(String text) {
-        if (text == null) return Component.empty();
+        if (text == null || text.isEmpty()) return Component.empty();
         String parsed = text.replace("&0", "<black>").replace("&1", "<dark_blue>").replace("&2", "<dark_green>")
                 .replace("&3", "<dark_aqua>").replace("&4", "<dark_red>").replace("&5", "<dark_purple>")
                 .replace("&6", "<gold>").replace("&7", "<gray>").replace("&8", "<dark_gray>")
@@ -69,21 +66,46 @@ public class MessageManager {
         return MiniMessage.miniMessage().deserialize(parsed);
     }
 
-    public Component getMessage(String path, Map<String, String> placeholders) {
-        String prefix = config.getString("prefix", "");
-        String msg = config.getString(path, path);
-        String full = prefix + msg;
-        for (Map.Entry<String, String> entry : placeholders.entrySet()) {
-            full = full.replace(entry.getKey(), entry.getValue());
-        }
-        return colorize(full);
+    public String toLegacy(Component component) {
+        return LegacyComponentSerializer.legacySection().serialize(component);
     }
 
-    public Component getRawMessage(String path, Map<String, String> placeholders) {
+    public String toLegacy(String text) {
+        return toLegacy(colorize(text));
+    }
+
+    public void sendMessage(CommandSender sender, String text, Map<String, String> placeholders) {
+        String msg = text;
+        for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+            msg = msg.replace(entry.getKey(), entry.getValue());
+        }
+        Audience audience = plugin.getAdventure().sender(sender);
+        audience.sendMessage(colorize(msg));
+    }
+
+    public void sendConfigMessage(CommandSender sender, String path, Map<String, String> placeholders) {
+        String prefix = config.getString("prefix", "");
+        String msg = config.getString(path, path);
+        sendMessage(sender, prefix + msg, placeholders);
+    }
+
+    public void sendActionBar(Player player, String path, Map<String, String> placeholders) {
         String msg = config.getString(path, path);
         for (Map.Entry<String, String> entry : placeholders.entrySet()) {
             msg = msg.replace(entry.getKey(), entry.getValue());
         }
-        return colorize(msg);
+        Audience audience = plugin.getAdventure().player(player);
+        audience.sendActionBar(colorize(msg));
+    }
+
+    public void sendTitle(Player player, String mainPath, String subPath, Map<String, String> placeholders) {
+        String main = config.getString(mainPath, "");
+        String sub = config.getString(subPath, "");
+        for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+            main = main.replace(entry.getKey(), entry.getValue());
+            sub = sub.replace(entry.getKey(), entry.getValue());
+        }
+        Audience audience = plugin.getAdventure().player(player);
+        audience.showTitle(Title.title(colorize(main), colorize(sub)));
     }
 }

@@ -1,20 +1,14 @@
-/*
- * AdvancedTags - A modern Minecraft title management system.
- * Copyright (C) 2026 ozan
- * 
- * Licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
- * You may not use this work for commercial purposes.
- * For more info: https://creativecommons.org/licenses/by-nc/4.0/
- */
 package me.advancedtags.menu;
 
 import me.advancedtags.AdvancedTags;
 import me.advancedtags.core.Tag;
+import me.advancedtags.utils.SchedulerUtils;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerCommandSendEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 
 import java.util.List;
 import java.util.Map;
@@ -27,37 +21,40 @@ public class MenuListener implements Listener {
     }
 
     @EventHandler
-    public void onCommandSend(PlayerCommandSendEvent event) {
-        event.getCommands().removeIf(command -> command.contains(":"));
-    }
-
-    @EventHandler
     public void onClick(InventoryClickEvent event) {
-        if (!(event.getInventory().getHolder() instanceof TagMenu)) return;
+        if (!(event.getInventory().getHolder() instanceof TagMenu menu)) return;
+
         event.setCancelled(true);
+        event.setResult(Event.Result.DENY);
 
         if (!(event.getWhoClicked() instanceof Player player)) return;
 
-        TagMenu menu = (TagMenu) event.getInventory().getHolder();
         int slot = event.getRawSlot();
         int size = event.getInventory().getSize();
         int maxItems = size - 9;
 
-        if (slot < 0 || slot >= size) return;
+        if (slot < 0 || slot >= size) {
+            player.updateInventory();
+            return;
+        }
 
         if (slot == size - 6 && menu.getPage() > 0) {
-            new TagMenu(plugin, player, menu.getPage() - 1).open();
+            int targetPage = menu.getPage() - 1;
+            SchedulerUtils.runDelayedOnPlayer(plugin, player, () -> new TagMenu(plugin, player, targetPage).open(), 1L);
             return;
         }
 
         if (slot == size - 5) {
-            player.closeInventory();
-            plugin.getTagManager().clearTag(player);
+            SchedulerUtils.runDelayedOnPlayer(plugin, player, () -> {
+                player.closeInventory();
+                plugin.getTagManager().clearTag(player);
+            }, 1L);
             return;
         }
 
         if (slot == size - 4 && (menu.getPage() + 1) * maxItems < menu.getTotalAvailable()) {
-            new TagMenu(plugin, player, menu.getPage() + 1).open();
+            int targetPage = menu.getPage() + 1;
+            SchedulerUtils.runDelayedOnPlayer(plugin, player, () -> new TagMenu(plugin, player, targetPage).open(), 1L);
             return;
         }
 
@@ -65,14 +62,36 @@ public class MenuListener implements Listener {
             List<Tag> tagsOnPage = menu.getTagsOnPage();
             if (slot < tagsOnPage.size()) {
                 Tag selected = tagsOnPage.get(slot);
-                
-                if (!player.hasPermission("advancedtags.tag." + selected.getId())) {
-                    player.sendMessage(plugin.getMessageManager().getMessage("locked-tag", Map.of()));
+
+                if (!plugin.getTagManager().hasTagPermission(player, selected.getId())) {
+                    plugin.getMessageManager().sendConfigMessage(player, "locked-tag", Map.of());
+                    player.updateInventory();
                     return;
                 }
-                
-                player.closeInventory();
-                plugin.getTagManager().selectTag(player, selected);
+
+                SchedulerUtils.runDelayedOnPlayer(plugin, player, () -> {
+                    player.closeInventory();
+                    plugin.getTagManager().selectTag(player, selected);
+                }, 1L);
+                return;
+            }
+        }
+
+        player.updateInventory();
+    }
+
+    @EventHandler
+    public void onDrag(InventoryDragEvent event) {
+        if (!(event.getInventory().getHolder() instanceof TagMenu)) return;
+
+        int topSize = event.getView().getTopInventory().getSize();
+        for (int slot : event.getRawSlots()) {
+            if (slot < topSize) {
+                event.setCancelled(true);
+                if (event.getWhoClicked() instanceof Player player) {
+                    player.updateInventory();
+                }
+                return;
             }
         }
     }

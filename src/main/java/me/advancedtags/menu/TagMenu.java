@@ -1,16 +1,7 @@
-/*
- * AdvancedTags - A modern Minecraft title management system.
- * Copyright (C) 2026 ozan
- * 
- * Licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
- * You may not use this work for commercial purposes.
- * For more info: https://creativecommons.org/licenses/by-nc/4.0/
- */
 package me.advancedtags.menu;
 
 import me.advancedtags.AdvancedTags;
 import me.advancedtags.core.Tag;
-import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -38,11 +29,13 @@ public class TagMenu implements InventoryHolder {
         this.page = page;
         this.allTags = new ArrayList<>(plugin.getTagManager().getTags().values());
 
-        String titleStr = plugin.getConfig().getString("menu_settings.title", "&8[&aTag Seçici&8]");
-        Component title = plugin.getMessageManager().colorize(titleStr);
-        int size = plugin.getConfig().getInt("menu_settings.size", 54);
+        String titleStr = plugin.getConfig().getString("menu_settings.title", "&8[&aTag Selection&8]");
+        String titleLegacy = plugin.getMessageManager().toLegacy(titleStr);
+        
+        int rawSize = plugin.getConfig().getInt("menu_settings.size", 36);
+        int size = Math.max(9, Math.min(54, (rawSize / 9) * 9));
 
-        this.inventory = Bukkit.createInventory(this, size, title);
+        this.inventory = Bukkit.createInventory(this, size, titleLegacy);
         setup();
     }
 
@@ -57,7 +50,7 @@ public class TagMenu implements InventoryHolder {
         ItemStack filler = new ItemStack(fillerMat);
         ItemMeta fm = filler.getItemMeta();
         if (fm != null) {
-            fm.displayName(Component.empty());
+            fm.setDisplayName(" ");
             filler.setItemMeta(fm);
         }
 
@@ -72,25 +65,25 @@ public class TagMenu implements InventoryHolder {
         String lockedMatName = plugin.getConfig().getString("menu_settings.locked.material", "GRAY_DYE");
         Material lockedMat = Material.matchMaterial(lockedMatName);
         if (lockedMat == null) lockedMat = Material.GRAY_DYE;
-        String lockedLore = plugin.getConfig().getString("menu_settings.locked.lore-append", "&c✘ Bu ünvana sahip değilsin!");
+        String lockedLore = plugin.getConfig().getString("menu_settings.locked.lore-append", "&c✘ You do not own this tag!");
 
         for (int i = start; i < end; i++) {
             Tag tag = allTags.get(i);
-            boolean hasPerm = player.hasPermission("advancedtags.tag." + tag.getId());
+            boolean hasPerm = plugin.getTagManager().hasTagPermission(player, tag.getId());
 
             ItemStack item = new ItemStack(hasPerm ? tag.getMaterial() : lockedMat);
             ItemMeta meta = item.getItemMeta();
             if (meta != null) {
-                meta.displayName(plugin.getMessageManager().colorize(tag.getDisplay()));
+                meta.setDisplayName(plugin.getMessageManager().toLegacy(tag.getDisplay()));
 
-                List<Component> lore = new ArrayList<>();
+                List<String> lore = new ArrayList<>();
                 for (String l : tag.getLore()) {
-                    lore.add(plugin.getMessageManager().colorize(l));
+                    lore.add(plugin.getMessageManager().toLegacy(l));
                 }
                 if (!hasPerm) {
-                    lore.add(plugin.getMessageManager().colorize(lockedLore));
+                    lore.add(plugin.getMessageManager().toLegacy(lockedLore));
                 }
-                meta.lore(lore);
+                meta.setLore(lore);
 
                 if (tag.getId().equals(currentTagId)) {
                     meta.addEnchant(Enchantment.LURE, 1, true);
@@ -109,12 +102,12 @@ public class TagMenu implements InventoryHolder {
             ItemStack prev = new ItemStack(prevMat);
             ItemMeta pm = prev.getItemMeta();
             if (pm != null) {
-                pm.displayName(plugin.getMessageManager().colorize(plugin.getConfig().getString("menu_settings.prev_page_button.display_name", "&aÖnceki Sayfa")));
-                List<Component> lore = new ArrayList<>();
+                pm.setDisplayName(plugin.getMessageManager().toLegacy(plugin.getConfig().getString("menu_settings.prev_page_button.display_name", "&aPrevious Page")));
+                List<String> lore = new ArrayList<>();
                 for (String l : plugin.getConfig().getStringList("menu_settings.prev_page_button.lore")) {
-                    lore.add(plugin.getMessageManager().colorize(l));
+                    lore.add(plugin.getMessageManager().toLegacy(l));
                 }
-                pm.lore(lore);
+                pm.setLore(lore);
                 prev.setItemMeta(pm);
             }
             inventory.setItem(size - 6, prev);
@@ -127,12 +120,12 @@ public class TagMenu implements InventoryHolder {
         ItemStack clear = new ItemStack(clearMat);
         ItemMeta cm = clear.getItemMeta();
         if (cm != null) {
-            cm.displayName(plugin.getMessageManager().colorize(plugin.getConfig().getString("menu_settings.no_tag_button.display_name", "&cTagi Kapat/Sıfırla")));
-            List<Component> lore = new ArrayList<>();
+            cm.setDisplayName(plugin.getMessageManager().toLegacy(plugin.getConfig().getString("menu_settings.no_tag_button.display_name", "&cReset Tag")));
+            List<String> lore = new ArrayList<>();
             for (String l : plugin.getConfig().getStringList("menu_settings.no_tag_button.lore")) {
-                lore.add(plugin.getMessageManager().colorize(l));
+                lore.add(plugin.getMessageManager().toLegacy(l));
             }
-            cm.lore(lore);
+            cm.setLore(lore);
             clear.setItemMeta(cm);
         }
         inventory.setItem(size - 5, clear);
@@ -145,12 +138,12 @@ public class TagMenu implements InventoryHolder {
             ItemStack next = new ItemStack(nextMat);
             ItemMeta nm = next.getItemMeta();
             if (nm != null) {
-                nm.displayName(plugin.getMessageManager().colorize(plugin.getConfig().getString("menu_settings.next_page_button.display_name", "&aSonraki Sayfa")));
-                List<Component> lore = new ArrayList<>();
+                nm.setDisplayName(plugin.getMessageManager().toLegacy(plugin.getConfig().getString("menu_settings.next_page_button.display_name", "&aNext Page")));
+                List<String> lore = new ArrayList<>();
                 for (String l : plugin.getConfig().getStringList("menu_settings.next_page_button.lore")) {
-                    lore.add(plugin.getMessageManager().colorize(l));
+                    lore.add(plugin.getMessageManager().toLegacy(l));
                 }
-                nm.lore(lore);
+                nm.setLore(lore);
                 next.setItemMeta(nm);
             }
             inventory.setItem(size - 4, next);

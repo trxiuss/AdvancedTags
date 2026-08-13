@@ -1,11 +1,3 @@
-/*
- * AdvancedTags - A modern Minecraft title management system.
- * Copyright (C) 2026 ozan
- * 
- * Licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
- * You may not use this work for commercial purposes.
- * For more info: https://creativecommons.org/licenses/by-nc/4.0/
- */
 package me.advancedtags.command;
 
 import me.advancedtags.AdvancedTags;
@@ -30,7 +22,7 @@ public class UnvanCommand implements CommandExecutor {
         if (!(sender instanceof Player player)) return true;
 
         if (!player.hasPermission("advancedtags.command")) {
-            player.sendMessage(plugin.getMessageManager().getMessage("no-permission", Map.of()));
+            plugin.getMessageManager().sendConfigMessage(player, "no-permission", Map.of());
             return true;
         }
 

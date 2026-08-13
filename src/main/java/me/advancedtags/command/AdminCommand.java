@@ -1,11 +1,3 @@
-/*
- * AdvancedTags - A modern Minecraft title management system.
- * Copyright (C) 2026 ozan
- * 
- * Licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
- * You may not use this work for commercial purposes.
- * For more info: https://creativecommons.org/licenses/by-nc/4.0/
- */
 package me.advancedtags.command;
 
 import me.advancedtags.AdvancedTags;
@@ -28,7 +20,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!sender.hasPermission("advancedtags.admin")) {
-            sender.sendMessage(plugin.getMessageManager().getMessage("no-permission", Map.of()));
+            plugin.getMessageManager().sendConfigMessage(sender, "no-permission", Map.of());
             return true;
         }
 
@@ -36,7 +28,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
             plugin.reloadConfig();
             plugin.getMessageManager().load();
             plugin.getTagManager().loadTags();
-            sender.sendMessage(plugin.getMessageManager().getMessage("reloaded", Map.of()));
+            plugin.getMessageManager().sendConfigMessage(sender, "reloaded", Map.of());
             return true;
         }
 

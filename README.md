@@ -80,10 +80,10 @@ tags:
 | ✅ Paper     | Fully Supported |
 | ✅ Purpur    | Fully Supported |
 | ✅ Folia     | Fully Supported |
-| ❌ Spigot    | Not Supported |
-| ❌ Bukkit    | Not Supported |
+| ✅ Spigot    | Fully Supported |
+| ✅ Bukkit    | Fully Supported |
 
-- Optimized for **modern server software**. Fully compatible with **Paper**, **Folia**, and all their fork (**Purpur**, **Pufferfish**, etc.).
+- Optimized for **modern server software**. Fully compatible with **Spigot**, **Bukkit**, **Paper**, **Folia**, and all their fork (**Purpur**, **Pufferfish**, etc.).
   
 ## 🧩 Placeholders
 Make sure that **PlaceholderAPI** is installed to use the **AdvancedTags** plugin.

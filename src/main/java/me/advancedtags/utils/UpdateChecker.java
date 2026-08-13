@@ -3,31 +3,31 @@ package me.advancedtags.utils;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import me.advancedtags.AdvancedTags;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class UpdateChecker implements Listener {
 
-    private final JavaPlugin plugin;
+    private final AdvancedTags plugin;
     private final String currentVersion;
     private String latestVersion = null;
     private boolean updateAvailable = false;
     private final ScheduledExecutorService scheduler;
 
-    public UpdateChecker(JavaPlugin plugin) {
+    public UpdateChecker(AdvancedTags plugin) {
         this.plugin = plugin;
         this.currentVersion = plugin.getDescription().getVersion();
         
@@ -69,11 +69,9 @@ public class UpdateChecker implements Listener {
             if (connection.getResponseCode() == 200) {
                 try (InputStreamReader reader = new InputStreamReader(connection.getInputStream())) {
                     JsonArray jsonArray = JsonParser.parseReader(reader).getAsJsonArray();
-                    
                     if (jsonArray.size() > 0) {
                         JsonObject latestRelease = jsonArray.get(0).getAsJsonObject();
                         latestVersion = latestRelease.get("version_number").getAsString();
-                        
                         updateAvailable = isNewerVersion(currentVersion, latestVersion);
                         return updateAvailable;
                     }
@@ -113,7 +111,7 @@ public class UpdateChecker implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (updateAvailable && event.getPlayer().isOp()) {
-            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            SchedulerUtils.runDelayedOnPlayer(plugin, event.getPlayer(), () -> {
                 if (event.getPlayer().isOnline()) {
                     sendPlayerUpdate(event.getPlayer());
                 }
@@ -122,26 +120,26 @@ public class UpdateChecker implements Listener {
     }
 
     private void sendConsoleUpdate(CommandSender sender) {
-        String[] lines = {
-            "&8&m--------------------------------------------------",
-            "&b&lADVANCED TAGS UPDATE",
-            "&7A new version of the plugin is available!",
-            "&cCurrent: " + currentVersion + " &8» &aNew: " + latestVersion,
-            "&eDownload here: &a&nhttps://modrinth.com/plugin/advancedtags",
-            "&8&m--------------------------------------------------"
-        };
-        for (String line : lines) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', line));
-        }
+        String msg = "<dark_gray>--------------------------------------------------\n" +
+                     "<aqua><bold>ADVANCED TAGS UPDATE</bold></aqua>\n" +
+                     "<gray>A new version of the plugin is available!\n" +
+                     "<red>Current: " + currentVersion + " <dark_gray>» <green>New: " + latestVersion + "\n" +
+                     "<yellow>Download: <green><underlined>https://modrinth.com/plugin/advancedtags</underlined></green>\n" +
+                     "<dark_gray>--------------------------------------------------";
+        plugin.getMessageManager().sendMessage(sender, msg, Map.of());
     }
 
-    private void sendPlayerUpdate(CommandSender sender) {
-        String msg = "&8&m--------------------------------------------------\n" +
-                     "&b&lADVANCED TAGS UPDATE\n" +
-                     "&7A new version of the plugin is available!\n" +
-                     "&cCurrent: " + currentVersion + " &8» &aNew: " + latestVersion + "\n" +
-                     "&eDownload here: &a&nhttps://modrinth.com/plugin/advancedtags\n" +
-                     "&8&m--------------------------------------------------";
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+    private void sendPlayerUpdate(Player player) {
+        String msg = "<dark_gray>--------------------------------------------------\n" +
+                     "<aqua><bold>ADVANCED TAGS UPDATE</bold></aqua>\n" +
+                     "<gray>A new version of the plugin is available!\n" +
+                     "<red>Current: " + currentVersion + " <dark_gray>» <green>New: " + latestVersion + "\n" +
+                     "<yellow>Download: <green><underlined>https://modrinth.com/plugin/advancedtags</underlined></green>\n" +
+                     "<dark_gray>--------------------------------------------------";
+        plugin.getMessageManager().sendMessage(player, msg, Map.of());
+    }
+
+    public void shutdown() {
+        scheduler.shutdown();
     }
 }

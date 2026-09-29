@@ -93,10 +93,6 @@ Make sure that **PlaceholderAPI** is installed to use the **AdvancedTags** plugi
 Licensed under CC BY-NC 4.0 (Attribution-NonCommercial 4.0 International).
 Commercial use and resale are strictly prohibited
 
-## Statistics
-
-[![bStats](https://bstats.org/signatures/bukkit/advancedtags.svg)](https://bstats.org/plugin/bukkit/advancedtags)
-
 ## Discord
 
 [![Discord](https://cdn.modrinth.com/data/cached_images/4de86371cc7bcf3818924b198f31baacc304700f.png)

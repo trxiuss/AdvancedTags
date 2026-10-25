@@ -66,8 +66,14 @@ public class MessageManager {
         return MiniMessage.miniMessage().deserialize(parsed);
     }
 
+    private static final LegacyComponentSerializer LEGACY_HEX = LegacyComponentSerializer.builder()
+            .character(LegacyComponentSerializer.SECTION_CHAR)
+            .hexColors()
+            .useUnusualXRepeatedCharacterHexFormat()
+            .build();
+
     public String toLegacy(Component component) {
-        return LegacyComponentSerializer.legacySection().serialize(component);
+        return LEGACY_HEX.serialize(component);
     }
 
     public String toLegacy(String text) {
